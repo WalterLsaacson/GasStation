@@ -1,0 +1,67 @@
+package com.gasstation.user;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.gasstation.util.Const;
+import com.guanyin.gasstation.R;
+
+public class LoginActivity extends Activity implements OnClickListener {
+
+	private EditText et_username;
+	private EditText et_password;
+
+	private TextView tv_login;
+
+	private ProgressDialog dialog;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_login);
+
+		initviews();
+
+		tv_login.setOnClickListener(this);
+	}
+
+	private void initviews() {
+		et_username = (EditText) findViewById(R.id.input_username);
+		et_password = (EditText) findViewById(R.id.input_password);
+
+		tv_login = (TextView) findViewById(R.id.tv_login);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.tv_login:
+			if (et_username.getText().toString().length() == 0) {
+				Const.showToast(this, "用户名不能为空！");
+				et_username.requestFocus();
+				break;
+			}
+
+			if (et_password.getText().toString().length() == 0) {
+				Const.showToast(this, "密码不能为空！");
+				et_username.requestFocus();
+				break;
+			}
+			dialog = ProgressDialog.show(this, null, "正在登录，请稍候...");
+			dialog.dismiss();
+
+			break;
+
+		default:
+			break;
+		}
+	}
+}

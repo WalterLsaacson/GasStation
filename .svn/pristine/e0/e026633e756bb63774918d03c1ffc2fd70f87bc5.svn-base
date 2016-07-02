@@ -1,0 +1,61 @@
+package com.gasstation.user;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.guanyin.gasstation.R;
+
+public class RechargeActivity extends Activity {
+
+	// private Dialog rechargeDialog;
+	// private Context context = this;
+	private ImageView iv_finish;
+
+	private TextView tv_recharge;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_recharge);
+		// TODO 电话号码的文字出现问题
+		// TODO 需要修改为fragment来实现,包括与当前的activity交互，联网的操作
+		// LayoutInflater inflater = LayoutInflater.from(context);
+		// final View rechargeView =
+		// inflater.inflate(R.layout.activity_recharge,
+		// null);
+		// AlertDialog.Builder rechargeBuilder = new AlertDialog.Builder(this);
+		// rechargeBuilder.setView(rechargeView);
+		// rechargeDialog = rechargeBuilder.create();
+		// rechargeDialog.show();
+
+		iv_finish = (ImageView) findViewById(R.id.iv_finish);
+		iv_finish.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				RechargeActivity.this.finish();
+			}
+		});
+
+		tv_recharge = (TextView) findViewById(R.id.tv_recharge);
+		tv_recharge.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(RechargeActivity.this, "充值成功！",
+						Toast.LENGTH_LONG).show();
+				;
+				finish();
+			}
+		});
+
+	}
+
+}

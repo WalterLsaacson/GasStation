@@ -1,0 +1,193 @@
+package com.gasstation.user;
+
+import okhttp3.Call;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.gasstation.main.MyApplication;
+import com.gasstation.util.Const;
+import com.guanyin.gasstation.R;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+public class RechargeActivity extends Activity implements OnClickListener {
+
+	private ImageView iv_finish;
+	private TextView tv_recharge;
+
+	private EditText et_recharge_card;
+	private EditText et_recharge_count;
+	private EditText et_recharge_manager;
+	private EditText et_recharge_tel;
+
+	private Context context = RechargeActivity.this;
+	private MyApplication app;
+	private String Tag = "RechargeActivity";
+
+	private ProgressDialog dialog;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_recharge);
+		if (app == null) {
+			app = MyApplication.getInstance();
+		}
+
+		initView();
+
+		iv_finish.setOnClickListener(this);
+		tv_recharge.setOnClickListener(this);
+
+	}
+
+	private void initView() {
+		iv_finish = (ImageView) findViewById(R.id.iv_finish);
+		tv_recharge = (TextView) findViewById(R.id.btn_recharge);
+
+		et_recharge_card = (EditText) findViewById(R.id.et_recharge_card);
+		et_recharge_count = (EditText) findViewById(R.id.et_recharge_count);
+		et_recharge_manager = (EditText) findViewById(R.id.et_recharge_manager);
+		et_recharge_tel = (EditText) findViewById(R.id.et_recharge_tel);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.iv_finish:
+			this.finish();
+			break;
+		case R.id.btn_recharge:
+			Const.log(Tag, "进入判定函数");
+			if (et_recharge_card.getText().toString().equals("")
+					|| et_recharge_card.getText().toString().length() < 14) {
+				Const.showToast(context, "请输入正确的充值卡号");
+				return;
+			}
+			if (et_recharge_count.getText().toString().equals("")) {
+				Const.showToast(context, "请输入充值金额");
+				return;
+			}
+			if (et_recharge_manager.getText().toString().equals("")) {
+				Const.showToast(context, "请输入充值人员");
+				return;
+			}
+			// || et_recharge_tel.getText().toString().length() < 11
+			if (et_recharge_tel.getText().toString().equals("")) {
+				Const.showToast(context, "请输入正确的电话号码");
+				return;
+			}
+			recharge();
+			finish();
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	private void recharge() {
+
+		dialog = ProgressDialog.show(context, null, "正在充值请稍候...");
+
+		final JSONObject jsonObj = new JSONObject();
+
+		// {
+		// "id": "1",
+		// "recharge_card": "2016-5-30xauto",
+		// "recharge_money": "100000",
+		// "recharge_memeber": "李小冉",
+		// "telephone": "1377777111"
+		// }
+
+		try {
+			jsonObj.put("id", app.sp.getString("station_id", "0"));
+			jsonObj.put("recharge_card", et_recharge_card.getText().toString()
+					.trim());
+			jsonObj.put("recharge_money", et_recharge_count.getText()
+					.toString().trim());
+			jsonObj.put("recharge_memeber", et_recharge_manager.getText()
+					.toString().trim());
+			jsonObj.put("telephone", et_recharge_tel.getText().toString()
+					.trim());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		OkHttpUtils.post().url(Const.serverurl)
+				.addParams("route", Const.apiRouteRecharge)
+				.addParams("token", app.sp.getString("token", null))
+				.addParams("jsonText", jsonObj.toString()).build()
+				.execute(new StringCallback() {
+					@Override
+					public void onError(Call request, Exception e) {
+						Const.log(Tag, e.getMessage());
+						dialog.dismiss();
+						Const.showToast(context, "联网失败:" + e.getMessage());
+					}
+
+					@Override
+					public void onResponse(String response) {
+
+						Const.log(Tag, response);
+						JSONObject jsonObj = null;
+						try {
+							jsonObj = new JSONObject(response);
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+						try {
+							{
+								// "status": {
+								// "succeed": "1"
+								// },
+								// "data": {
+								// "toltal_sum": "310000.00",
+								// "addup": "330000.00",
+								// "consumeup": "2550.00"
+								// }
+								if (jsonObj.getJSONObject("status")
+										.getString("succeed").equals("1")) {
+									Const.log(Tag, "充值成功");
+									String totalSum = jsonObj.getJSONObject(
+											"data").getString("toltal_sum");
+									Editor editor = app.sp.edit();
+									editor.putString("toltal_sum", totalSum);
+									editor.apply();
+									String addup = jsonObj
+											.getJSONObject("data").getString(
+													"addup");
+									String consumeup = jsonObj.getJSONObject(
+											"data").getString("consumeup");
+									dialog.dismiss();
+									Const.showToast(context, "充值成功！");
+								} else {
+									Const.showToast(context, "充值失败:"
+											+ jsonObj.getJSONObject("status")
+													.getString("error_desc"));
+									dialog.dismiss();
+								}
+							}
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					};
+
+				});
+	}
+}

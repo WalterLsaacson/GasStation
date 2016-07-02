@@ -1,0 +1,17 @@
+package com.gasstation.user;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+import com.guanyin.gasstation.R;
+
+public class RechargeRecordActivity extends Activity {
+
+	// 重新绘制每日详情的列表
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_recharge_record);
+	}
+
+}

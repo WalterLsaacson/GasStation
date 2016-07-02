@@ -1,0 +1,43 @@
+package com.gasstation.data;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+
+public class RefuelSet {
+
+	private ArrayList<ReguelInfo> mReguelInfos;
+	private Context mAppContext;
+
+	// private static RefuelSet sRefuelSet;
+
+	public RefuelSet(Context appContext) {
+		mAppContext = appContext;
+		mReguelInfos = new ArrayList<ReguelInfo>();
+		for (int i = 0; i < 15; i++) {
+			ReguelInfo reguelInfo = new ReguelInfo("陕A12345" + i, "5号", 92,
+					5.21, 23, 120);
+			mReguelInfos.add(reguelInfo);
+		}
+	}
+
+	// public static RefuelSet get(Context c) {
+	// if (sRefuelSet == null) {
+	// sRefuelSet = new RefuelSet(c.getApplicationContext());
+	// }
+	// return sRefuelSet;
+	// }
+
+	public ArrayList<ReguelInfo> getReguelInfos() {
+		return mReguelInfos;
+	}
+
+	public int getLength() {
+		return mReguelInfos.size();
+	}
+
+	public ReguelInfo getRegue(int position) {
+		return mReguelInfos.get(position);
+	}
+
+}

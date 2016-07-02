@@ -1,0 +1,5 @@
+package com.gasstation.main;
+
+public class MyBroadcastReceiver {
+
+}

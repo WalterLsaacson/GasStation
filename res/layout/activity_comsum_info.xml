@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/background" >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="@string/back"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_record_price"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_his_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_cur_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="@string/custom_money"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_recharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/recharge"
+            android:gravity="center"
+            android:text="@string/recharge"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <RadioGroup
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/record_rb_back"
+                android:button="@null"
+                android:enabled="false"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/contents"
+                android:textColor="@drawable/record_rb_text"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/rb_consume_record"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/record_rb_back"
+                android:button="@null"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/consume_record"
+                android:textColor="@drawable/record_rb_text"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/rb_recharge_record"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/record_rb_back"
+                android:button="@null"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/recharge_record"
+                android:textColor="@drawable/record_rb_text"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/frame_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

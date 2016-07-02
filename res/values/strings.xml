@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_consume_record">ConsumeRecordActivity</string>
+    <string name="title_activity_comsum_info">ComsumInfoActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_recharge">RechargeActivity</string>
+    <string name="title_activity_recharge_record">RechargeRecordActivity</string>
+    <string name="title_activity_pending">PendingActivity</string>
+    <string name="text_login">登陆</string>
+    <string name="info">账户信息</string>
+    <string name="recharge">充值</string>
+    <string name="cur_account">当前账户：</string>
+    <string name="back">返回</string>
+    <string name="contents">目录</string>
+    <string name="consume_record">消费记录</string>
+    <string name="recharge_record">充值记录</string>
+    <string name="recharge_account">充值卡号：</string>
+    <string name="tel">电&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;话：</string>
+    <string name="recharge_manager">充值人员：</string>
+    <string name="recharge_count">充值金额：</string>
+    <string name="nwu_gasstation">西北大学加油站</string>
+    <string name="btn_recharge">充值</string>
+    <string name="logout">注销当前登录</string>
+    <string name="logout_confirm">确认要注销当前登录吗？</string>
+    <string name="howmany">辆车加油</string>
+    <string name="oil_mass">加油的总量：23升</string>
+    <string name="ssheng">升</string>
+    <string name="oil_money">加油金额：</string>
+    <string name="yuan">元</string>
+    <string name="_100000">账户余额：100000</string>
+    <string name="notification_print">通知打印</string>
+    <string name="notification_yuyin">通知语音</string>
+    <string name="user5">user5</string>
+    <string name="_123456">123456</string>
+    <string name="chognzhi">充值</string>
+    <string name="cleared">已结算</string>
+    <string name="no_record">当前月无消费记录！</string>
+    <string name="app_name">XautoUser</string>
+    <string name="stationName">默认的加油站名字</string>
+    <string name="m">2m</string>
+    <string name="license">车牌号</string>
+    <string name="oilgun">油枪号</string>
+    <string name="_5">5号</string>
+    <string name="money_style">金额（元）</string>
+    <string name="pay_style">支付方式</string>
+    <string name="add_oil">加油</string>
+    <string name="notice">是否开票</string>
+    <string name="bill_info">开票信息</string>
+    <string name="real_pay">实付:</string>
+    <string name="submit">提交</string>
+    <string name="defult_name">关印</string>
+    <string name="custom_money">当前总额：11111</string>
+    <string name="cars">加油29辆车</string>
+    <string name="money_oil">加油金额：5234元</string>
+    <string name="_18829282408">18829282408</string>
+
+</resources>

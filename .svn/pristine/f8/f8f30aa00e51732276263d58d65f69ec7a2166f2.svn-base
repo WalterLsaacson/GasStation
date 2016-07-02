@@ -1,0 +1,91 @@
+package com.gasstation.user;
+
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+import com.gasstation.customAdapter.MyFragmentConsume;
+import com.gasstation.util.Const;
+import com.guanyin.gasstation.R;
+
+public class ConsumeInfoActivity extends Activity implements OnClickListener,
+		android.widget.CompoundButton.OnCheckedChangeListener {
+
+	private Context Context = this;
+	private RadioButton rb_consumeRecord;
+	private RadioButton rb_rechargeRecord;
+
+	private TextView tv_recharge;
+	private TextView tv_back;
+
+	private Intent intent;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_comsum_info);
+
+		// 初始化组件
+		initView();
+		// 充值按钮的跳转
+		tv_recharge.setOnClickListener(this);
+		tv_back.setOnClickListener(this);
+		rb_consumeRecord.setOnCheckedChangeListener(this);
+		rb_rechargeRecord.setOnCheckedChangeListener(this);
+	}
+
+	private void initView() {
+		rb_consumeRecord = (RadioButton) findViewById(R.id.rb_consume_record);
+		rb_rechargeRecord = (RadioButton) findViewById(R.id.rb_recharge_record);
+		tv_recharge = (TextView) findViewById(R.id.tv_recharge);
+		tv_back = (TextView) findViewById(R.id.tv_back);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.tv_recharge:
+			intent = new Intent(this, RechargeActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.tv_back:
+			intent = new Intent(this, PendingActivity.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		switch (buttonView.getId()) {
+		case R.id.rb_consume_record:
+			Const.showToast(Context, "消费记录");
+			MyFragmentConsume fragment = new MyFragmentConsume();
+			FragmentManager fragmentManager = getFragmentManager();
+			FragmentTransaction transaction = fragmentManager
+					.beginTransaction();
+			transaction.replace(R.id.frame_fragment, fragment);
+			transaction.commit();
+			break;
+		case R.id.rb_recharge_record:
+			Const.showToast(Context, "充值记录");
+			break;
+		default:
+			break;
+		}
+	}
+
+}

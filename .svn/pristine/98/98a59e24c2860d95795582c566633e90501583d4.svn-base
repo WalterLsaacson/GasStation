@@ -1,0 +1,162 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/background" >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="@string/back"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_record_price"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="历史总额：11111"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="消费总额：11111"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="当前总额：11111"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_recharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/recharge"
+            android:gravity="center"
+            android:text="@string/recharge"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <RadioGroup
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/record_rb_back"
+                android:button="@null"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/contents"
+                android:textColor="@drawable/record_rb_text"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/rb_consume_record"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/record_rb_back"
+                android:button="@null"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/consume_record"
+                android:textColor="@drawable/record_rb_text"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/record_rb_back"
+                android:button="@null"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/recharge_record"
+                android:textColor="@drawable/record_rb_text"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <ListView
+            android:id="@+id/lv_year"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:background="@color/year_item_unselected"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/white"
+            android:dividerHeight="1dp"
+            android:fastScrollEnabled="true"
+            android:listSelector="@color/year_item_selected"
+            android:scrollbars="none" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/lv_month"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/month_item_unselected"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/white"
+            android:dividerHeight="1dp"
+            android:fastScrollEnabled="true"
+            android:listSelector="@color/month_item_selected"
+            android:scrollbars="none" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/lv_day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/white"
+            android:dividerHeight="1dp"
+            android:fastScrollEnabled="true"
+            android:scrollbars="none" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

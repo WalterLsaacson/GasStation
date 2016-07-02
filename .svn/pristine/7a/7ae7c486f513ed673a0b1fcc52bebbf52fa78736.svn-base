@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ListView
+        android:id="@+id/lv_year"
+        android:layout_width="115dp"
+        android:layout_height="match_parent"
+        android:background="@color/year_item_unselected"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@color/white"
+        android:dividerHeight="1dp"
+        android:fastScrollEnabled="true"
+        android:listSelector="@color/year_item_selected"
+        android:scrollbars="none" >
+    </ListView>
+
+    <ListView
+        android:id="@+id/lv_month"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="@color/month_item_unselected"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@color/white"
+        android:dividerHeight="1dp"
+        android:fastScrollEnabled="true"
+        android:listSelector="@color/month_item_selected"
+        android:scrollbars="none" >
+    </ListView>
+
+    <ListView
+        android:id="@+id/lv_day"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@color/white"
+        android:dividerHeight="1dp"
+        android:fastScrollEnabled="true"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

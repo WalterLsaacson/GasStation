@@ -1,0 +1,103 @@
+package com.gasstation.customAdapter;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.gasstation.data.RechargeInfo;
+import com.gasstation.user.ConsumeInfoActivity;
+import com.guanyin.gasstation.R;
+
+public class MyListViewDayAdapter extends BaseAdapter {
+
+	private static int sum = 01;
+	private Context context;
+	private ArrayList<RechargeInfo> res;
+
+	public MyListViewDayAdapter(Context context, ArrayList<RechargeInfo> res) {
+		super();
+		this.context = context;
+		this.res = res;
+	}
+
+	@Override
+	public int getCount() {
+		return res.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder holder = new ViewHolder();
+		ViewHolder1 holder1 = new ViewHolder1();
+
+		if (ConsumeInfoActivity.record) {
+			if (convertView == null) {
+				// 加载充值记录
+				convertView = LayoutInflater.from(context).inflate(
+						R.layout.recharge_record, null);
+				holder1.tv_recharge_member = (TextView) convertView
+						.findViewById(R.id.tv_recharge_member);
+				holder1.tv_recharge_money = (TextView) convertView
+						.findViewById(R.id.tv_recharge_money);
+				holder1.tv_recharge_tell = (TextView) convertView
+						.findViewById(R.id.tv_recharge_tell);
+				convertView.setTag(holder1);
+			}
+			TextView tv_recharge_member = ((ViewHolder1) convertView.getTag()).tv_recharge_member;
+			tv_recharge_member.setText(res.get(position).getRecharge_memeber());
+			TextView tv_recharge_money = ((ViewHolder1) convertView.getTag()).tv_recharge_money;
+			tv_recharge_money.setText(res.get(position).getRecharge_money());
+			TextView tv_recharge_tell = ((ViewHolder1) convertView.getTag()).tv_recharge_tell;
+			tv_recharge_tell.setText(res.get(position).getTelephone());
+
+		} else {
+			if (convertView == null) {
+				// 加载消费记录
+				convertView = LayoutInflater.from(context).inflate(
+						R.layout.day_item, null);
+				holder.tv_date_num = (TextView) convertView
+						.findViewById(R.id.tv_date_num);
+				holder.tv_oil_gross = (TextView) convertView
+						.findViewById(R.id.tv_oil_gross);
+				holder.tv_total_price = (TextView) convertView
+						.findViewById(R.id.tv_total_price);
+				convertView.setTag(holder);
+			}
+			TextView tv_date_num = ((ViewHolder) convertView.getTag()).tv_date_num;
+			tv_date_num.setText(sum + "号 ： " + "29" + "辆车加油");
+			TextView tv_oil_gross = ((ViewHolder) convertView.getTag()).tv_oil_gross;
+			tv_oil_gross.setText("加油量：" + "23" + "升");
+			TextView tv_total_price = ((ViewHolder) convertView.getTag()).tv_total_price;
+			tv_total_price.setText("加油金额：" + "5120" + "元");
+		}
+		return convertView;
+	}
+
+	class ViewHolder {
+		TextView tv_date_num;
+		TextView tv_oil_gross;
+		TextView tv_total_price;
+	}
+
+	class ViewHolder1 {
+		TextView tv_recharge_money;
+		TextView tv_recharge_member;
+		TextView tv_recharge_tell;
+	}
+
+}

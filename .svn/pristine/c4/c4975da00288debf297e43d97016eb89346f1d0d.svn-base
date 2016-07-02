@@ -1,0 +1,84 @@
+package com.gasstation.customAdapter;
+
+import java.util.ArrayList;
+
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+
+import com.guanyin.gasstation.R;
+
+public class MyFragmentConsume extends Fragment {
+
+	private ListView yeartView;
+	private ListView monthView;
+
+	private ArrayList<String> years;
+	private ArrayList<String> months;
+
+	private MyListViewAdapter yearAdapter;
+	private MyListViewAdapter monthAdapter;
+
+	// 加载日期的数据
+	private ListView dayView;
+	private MyListViewDayAdapter dayAdapter;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.fragment, container, false);
+
+		yeartView = (ListView) view.findViewById(R.id.lv_year);
+		yeartView = (ListView) view.findViewById(R.id.lv_month);
+		yeartView = (ListView) view.findViewById(R.id.lv_day);
+
+		// 初始化year的listview
+		years = new ArrayList<String>();
+		for (int i = 2016; i < 2018; i++) {
+			years.add("" + i);
+		}
+		yearAdapter = new MyListViewAdapter(years, getActivity(), "year");
+		yeartView.setAdapter(yearAdapter);
+
+		// TODO 在这里默认将年份的listview和月份的listview加载出来，在点击事件内只是将listview进行刷新
+
+		// 初始化month的listview
+		months = new ArrayList<String>();
+		for (int i = 1; i < 13; i++) {
+			months.add("" + i);
+		}
+		monthAdapter = new MyListViewAdapter(months, getActivity(), "month");
+		monthView.setAdapter(monthAdapter);
+
+		// 点击年份之后加载月份列表
+		yeartView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				monthView.setAdapter(monthAdapter);
+				// 点击月份之后加载日期的数据
+				monthView.setOnItemClickListener(new OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view,
+							int position, long id) {
+						dayAdapter = new MyListViewDayAdapter(getActivity(), 2);
+						dayView.setAdapter(dayAdapter);
+					}
+				});
+
+			}
+		});
+		return view;
+	}
+}

@@ -1,0 +1,72 @@
+package com.gasstation.customAdapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.guanyin.gasstation.R;
+
+public class MyListViewDayAdapter extends BaseAdapter {
+
+	private static int sum = 01;
+	private Context context;
+	private int count;
+
+	public MyListViewDayAdapter(Context context, int count) {
+		super();
+		this.context = context;
+		this.count = count;
+	}
+
+	// TODO 未加载数据，直接设置文本,日期列表的数量由传入的count参数决定
+	@Override
+	public int getCount() {
+		return count;
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder holder = new ViewHolder();
+		if (convertView == null) {
+			convertView = LayoutInflater.from(context).inflate(R.layout.day,
+					null);
+			holder = new ViewHolder();
+			holder.tv_date_num = (TextView) convertView
+					.findViewById(R.id.tv_date_num);
+			holder.tv_oil_gross = (TextView) convertView
+					.findViewById(R.id.tv_oil_gross);
+			holder.tv_total_price = (TextView) convertView
+					.findViewById(R.id.tv_total_price);
+			convertView.setTag(holder);
+		}
+		TextView tv_date_num = ((ViewHolder) convertView.getTag()).tv_date_num;
+		tv_date_num.setText(sum + "号 ： " + "29" + "辆车加油");
+		TextView tv_oil_gross = ((ViewHolder) convertView.getTag()).tv_oil_gross;
+		tv_oil_gross.setText("加油量：" + "23" + "升");
+		TextView tv_total_price = ((ViewHolder) convertView.getTag()).tv_total_price;
+		tv_total_price.setText("加油金额：" + "5120" + "元");
+		// TODO 最后是不是需要一张图片来显示
+		return convertView;
+	}
+
+	class ViewHolder {
+		TextView tv_date_num;
+		TextView tv_oil_gross;
+		TextView tv_total_price;
+
+	}
+
+}

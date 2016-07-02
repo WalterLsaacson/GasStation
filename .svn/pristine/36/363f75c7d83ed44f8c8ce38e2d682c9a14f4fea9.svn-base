@@ -1,0 +1,71 @@
+package com.gasstation.user;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Paint;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.GridView;
+import android.widget.TextView;
+
+import com.gasstation.customAdapter.MyGridViewAdapter;
+import com.gasstation.data.RefuelSet;
+import com.gasstation.main.MyApplication;
+import com.guanyin.gasstation.R;
+
+public class PendingActivity extends Activity implements OnClickListener {
+
+	private Context contentContext = this;
+	private TextView tv_balance;
+	private TextView tv_info;
+	private TextView tv_date;
+	// 设置gridview
+	private GridView gridView;
+	private MyGridViewAdapter adapter;
+	private RefuelSet res;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_pending);
+
+		initView();
+
+		// 设置账户余额的显示信息
+		tv_balance.setText(" 	|	 账户余额：" + MyApplication.sBanance + "	 | 	");
+
+		// 设置获取账户信息的函数
+		tv_info.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+		tv_info.setOnClickListener(this);
+		// 设置时间
+		tv_date.setText("日期：" + MyApplication.Date());
+
+		res = new RefuelSet(contentContext);
+		gridView = (GridView) findViewById(R.id.pending_gridview);
+		adapter = new MyGridViewAdapter(this, res);
+		gridView.setAdapter(adapter);
+	}
+
+	private void initView() {
+		tv_balance = (TextView) findViewById(R.id.balance);
+		tv_info = (TextView) findViewById(R.id.info);
+		tv_date = (TextView) findViewById(R.id.date);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.info:
+			Intent intent = new Intent(this, ConsumeInfoActivity.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+	}
+}

@@ -1,0 +1,246 @@
+package com.gasstation.data;
+
+public class ReguelInfo {
+
+	// 老师的类成员变量
+	// card.journalId = obj.getString("journal_id");
+	// card.memberId = obj.getString("member_id");
+	// card.invoiceCode = obj.getString("invoice_code");
+	// card.invoiceName = obj.getString("invoice_name");
+	// card.stationId = obj.getString("station_id");
+	// card.carNumber = obj.getString("car_number");
+	// card.gunNumber = obj.getString("gun_number");
+	// card.gasType = obj.getString("gas_type");
+	// card.price = obj.getString("price");
+	// card.totalPrice = obj.getString("toltal_price");
+	// card.oilMass = obj.getString("oil_mass");
+	// card.noticeState = obj.getString("state");
+	// card.printState = obj.getString("invoice_print");
+	// card.insertTime = obj.getString("insert_time");
+	// oilCards.add(card);
+	// 自己先前定义的类成员变量
+	// private String license;
+	// private String oilgun;
+	// private int oilQuality;
+	// private double price;
+	// private int gross;
+	// private int totalPrice;
+	// private String time;
+	// private boolean isBanlanced = false;
+
+	// 自己定义的类
+	// public String getLicense() {
+	// return license;
+	// }
+	//
+	// public void setLicense(String license) {
+	// this.license = license;
+	// }
+	//
+	// public String getOilgun() {
+	// return "油    枪  ：" + oilgun;
+	// }
+	//
+	// public void setOilgun(String oilgun) {
+	// this.oilgun = oilgun;
+	// }
+	//
+	// public String getOilQuality() {
+	// return "油    品  ：" + oilQuality;
+	// }
+	//
+	// public void setOilQuality(int oilQuality) {
+	// this.oilQuality = oilQuality;
+	// }
+	//
+	// public String getPrice() {
+	// return "单    价  ： " + price;
+	// }
+	//
+	// public void setPrice(double price) {
+	// this.price = price;
+	// }
+	//
+	// public String getGross() {
+	// return "加油量  ：" + gross;
+	// }
+	//
+	// public void setGross(int gross) {
+	// this.gross = gross;
+	// }
+	//
+	// public String getTotalPrice() {
+	// return "总    价  ：" + totalPrice;
+	// }
+	//
+	// public void setTotalPrice(int totalPrice) {
+	// this.totalPrice = totalPrice;
+	// }
+	//
+	// public String getTime() {
+	// return time;
+	// }
+	//
+	// public void setTime(String time) {
+	// this.time = time;
+	// }
+	//
+	// public boolean isBanlanced() {
+	// return isBanlanced;
+	// }
+	//
+	// public void setBanlanced(boolean isBanlanced) {
+	// this.isBanlanced = isBanlanced;
+	// }
+	//
+	// public ReguelInfo(String license, String oilgun, int oilQuality,
+	// double price, int gross, int totalPrice) {
+	// super();
+	// SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
+	// Date curDate = new Date(System.currentTimeMillis());// 获取当前时间
+	// this.time = formatter.format(curDate);
+	// this.license = license;
+	// this.oilgun = oilgun;
+	// this.oilQuality = oilQuality;
+	// this.price = price;
+	// this.gross = gross;
+	// this.totalPrice = totalPrice;
+	// }
+
+	private String journalIdString;
+	public String memberId;
+	public String invoiceCode;
+	public String invoiceName;
+	public String stationId;
+	public String carNumber;
+	public String gunNumber;
+	public String gasType;
+	public String price;
+	public String totalPrice;
+	public String oilMass;
+	public String noticeState;
+	public String printState;
+	public String insertTime;
+	public String journalId;
+
+	public String getJournalId() {
+		return journalId;
+	}
+
+	public void setJournalId(String journalId) {
+		this.journalId = journalId;
+	}
+
+	public String getJournalIdString() {
+		return journalIdString;
+	}
+
+	public void setJournalIdString(String journalIdString) {
+		this.journalIdString = journalIdString;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getInvoiceCode() {
+		return invoiceCode;
+	}
+
+	public void setInvoiceCode(String invoiceCode) {
+		this.invoiceCode = invoiceCode;
+	}
+
+	public String getInvoiceName() {
+		return invoiceName;
+	}
+
+	public void setInvoiceName(String invoiceName) {
+		this.invoiceName = invoiceName;
+	}
+
+	public String getStationId() {
+		return stationId;
+	}
+
+	public void setStationId(String stationId) {
+		this.stationId = stationId;
+	}
+
+	public String getCarNumber() {
+		return carNumber;
+	}
+
+	public void setCarNumber(String carNumber) {
+		this.carNumber = carNumber;
+	}
+
+	public String getGunNumber() {
+		return "油枪：" + gunNumber;
+	}
+
+	public void setGunNumber(String gunNumber) {
+		this.gunNumber = gunNumber;
+	}
+
+	public String getGasType() {
+		return "油品：" + gasType;
+	}
+
+	public void setGasType(String gasType) {
+		this.gasType = gasType;
+	}
+
+	public String getPrice() {
+		return "单价：" + price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getTotalPrice() {
+		return "总价：" + totalPrice;
+	}
+
+	public void setTotalPrice(String totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public String getOilMass() {
+		return "加油量：" + oilMass;
+	}
+
+	public void setOilMass(String oilMass) {
+		this.oilMass = oilMass;
+	}
+
+	public String getNoticeState() {
+		return noticeState;
+	}
+
+	public void setNoticeState(String noticeState) {
+		this.noticeState = noticeState;
+	}
+
+	public String getPrintState() {
+		return printState;
+	}
+
+	public void setPrintState(String printState) {
+		this.printState = printState;
+	}
+
+	public String getInsertTime() {
+		return "11:11";
+	}
+
+	public void setInsertTime(String insertTime) {
+		this.insertTime = insertTime;
+	}
+
+}

@@ -1,0 +1,22 @@
+package com.gasstation.main;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class MyApplication {
+
+	public static String token = "";
+
+	// 账户余额
+	public static final double sBanance = 0.0;
+
+	// 获取系统时间
+	public static String Date() {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd ");
+		Date curDate = new Date(System.currentTimeMillis());// 获取当前时间
+		String date = formatter.format(curDate);
+		return date;
+
+	}
+
+}

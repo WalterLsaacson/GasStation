@@ -1,0 +1,36 @@
+package com.gasstation.user;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.Window;
+import android.widget.GridView;
+
+import com.gasstation.customAdapter.MyGridViewAdapter;
+import com.gasstation.data.ReguelInfo;
+import com.guanyin.gasstation.R;
+
+public class ConsumeRecordActivity extends Activity {
+
+	private Context contentContext = this;
+
+	// 设置gridview
+	private GridView gridView;
+	private MyGridViewAdapter adapter;
+	private ArrayList<ReguelInfo> res;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_consume_record);
+
+		res = new ArrayList<ReguelInfo>();
+		gridView = (GridView) findViewById(R.id.record_grid);
+		adapter = new MyGridViewAdapter(this, res);
+		gridView.setAdapter(adapter);
+	}
+
+}

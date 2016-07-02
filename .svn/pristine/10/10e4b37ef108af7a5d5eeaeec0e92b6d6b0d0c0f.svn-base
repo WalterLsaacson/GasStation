@@ -1,0 +1,16 @@
+package com.gasstation.util;
+
+import android.content.Context;
+import android.widget.Toast;
+
+public class Const {
+	/** TODO 正式发布之前改为false */
+	public static final boolean debug = true;
+	/** 登录接口 */
+	public static final String serverurl = "http://139.129.19.236/xauto_sever/app_interface/index.php";
+
+	public static final void showToast(final Context context,
+			final String contents) {
+		Toast.makeText(context, contents, Toast.LENGTH_SHORT).show();
+	}
+}

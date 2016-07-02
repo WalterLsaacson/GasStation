@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="background">#455469</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#22B286</color>
+    <color name="blue">#0000FF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#ECECEC</color>
+    <color name="orange">#ffff6c00</color>
+    <color name="deep_back">#363a55</color>
+    <color name="year_item_selected">#a1a3a8</color>
+    <color name="year_item_unselected">#bfc0c4</color>
+    <color name="month_item_selected">#bfc0c4</color>
+    <color name="month_item_unselected">#d4d6dc</color>
+
+</resources>
