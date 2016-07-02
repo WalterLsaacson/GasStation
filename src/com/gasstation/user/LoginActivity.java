@@ -17,8 +17,8 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.gasstation.application.MyApplication;
 import com.gasstation.util.Const;
+import com.gasstation.util.MyApplication;
 import com.guanyin.gasstation.R;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
